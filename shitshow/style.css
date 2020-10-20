@@ -11,6 +11,13 @@ html, body, .page {
   overflow: hidden; 
 }
 
+@media screen and (max-width: 1000px) and (max-height: 720px) {
+   html {
+      transform: scale(2);   
+      // or simply zoom: 50%
+   }
+}
+
 .castinfo{
   position:relative;
   top:-40px;
