@@ -26,27 +26,12 @@
   font-family: 'Entypo', sans-serif;
 }
 
-html,
-body {
-  height: 100%;
-}
+
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-  overflow-x: hidden;
-  background: #222a2c;
-  font-family: "Raleway", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  color: #485f67;
-  text-align: center;
-}
 
 a {
   text-decoration: none;
