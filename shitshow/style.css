@@ -84,14 +84,27 @@ html, body, .page {
   overflow: scroll;
 }
 
-#p1 { background: url("https://flier.cc/urbanbg.jpg");
-background-size: 600px 600px;}
-#p2 { background: url("https://flier.cc/urbanbg2.jpg");
-background-size: 600px 600px;}
-#p3 { background: url("https://flier.cc/urbanbg3.jpg");
-background-size: 600px 600px;}
-#p4 { background: url("https://flier.cc/urbanbg3.jpg");
-background-size: 600px 600px;}
+#p1 { background: url("https://flier.cc/urbanmbg.jpg");
+background-size: 900px 900px;  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+
+}
+#p2 { background: url("https://flier.cc/urbanmbg.jpg");
+background-size: 900px 900px;
+ background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;}
+#p3 { background: url("https://flier.cc/urbanmbg.jpg");
+background-size: 900px 900px;
+ background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;}
+#p4 { background: url("https://flier.cc/urbanmbg.jpg");
+background-size: 900px 900px;
+ background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;}
 #p5 { background: rebeccapurple; }
 
 #t2:target #p2,
