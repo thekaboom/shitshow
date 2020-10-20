@@ -74,6 +74,12 @@ html, body, .page {
   left: 10px;
 }
 
+.venue{
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+
 #p1 {
   left: 0;
  
