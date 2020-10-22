@@ -2,118 +2,53 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>flier.cc - interactive promotional fliers - launching soon </title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+  <title>CodePen - Full width menu &amp; SVG animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/292951/OrbitControls_copy.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three-bas@2.12.0/dist/bas.min.js"></script>
-
-<div class="text"> <div class="text2"> INTERACTIVE PROMO FLIERS</div><div class="scene">
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
-  <div class="layer"></div>
+<div class="container">
+  <div class="menu-container" id="toggle">
+  <a href="#" class="menu" ><i class="fa fa-bars" aria-hidden="true"></i></a>
+  </div>
+  <div class="title-container"><h1><span>flier.cc</span><br /><span3>INTERACTIVE PROMOTIONAL FLIERS</span3><br><br><span2>launching soon</span2></h1>
+    <div class="circle"></div>
 </div>
-<div class="text3"> launching soon</div>
-  
-  <div class="me"><a href="http://puffbat.com"><img src="https://raw.githubusercontent.com/thekaboom/pf/master/images/homef.png" height="50px" alt="3D Glasses" /><b><br>J. Placeres<br>puffbat.com</a> <b></div>
- </div>
 
-<script src="https://codepen.io/clindsey/pen/poyBmov.js"></script> <!-- threelium-0.0.8 -->
- <!-- profile-link-2.0.0 -->
-<!-- <script>(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//rawgit.com/mrdoob/stats.js/master/build/stats.min.js';document.head.appendChild(script);})()</script> -->
+<svg version="1.1" id="svg-left" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 600 400" style="enable-background:new 0 0 600 400;" xml:space="preserve">
+<g>
+	<path class="blob" d="M220.262,366.814c41.228-14.367,64.978-58.826,96.198-136.802
+		c43.518-108.692,53.929-137.426,67.672-149.92s154.708-58.065,177.821-65.59C576.392,9.802,591.841,5.391,596.66-2H-2v334.452
+		c16.689,8.319,35.468,14.508,56.726,18.745C98.453,359.914,179.034,381.181,220.262,366.814z"/>
+</g>
+</svg>
+<svg version="1.1" id="svg-right" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 600 400" style="enable-background:new 0 0 600 400;" xml:space="preserve">
+<g>
+	<path  class="blob2" d="M361.076,143.985c9.307,26.708,38.108,42.094,88.622,62.319
+		c70.412,28.192,89.027,34.936,97.12,43.839c8.093,8.903,37.615,100.223,42.49,115.196c3.045,9.354,5.902,19.361,10.691,22.483V0
+		H383.337c-5.389,10.811-9.398,22.976-12.143,36.748C365.547,65.075,351.769,117.277,361.076,143.985z"/>
+</g>
+</svg>
 
-<div id="js-app"></div>
-
-<script type="shader/fragment" id="js-noise">
-//
-// Description : Array and textureless GLSL 2D simplex noise function.
-//      Author : Ian McEwan, Ashima Arts.
-//  Maintainer : stegu
-//     Lastmod : 20110822 (ijm)
-//     License : Copyright (C) 2011 Ashima Arts. All rights reserved.
-//               Distributed under the MIT License. See LICENSE file.
-//               https://github.com/ashima/webgl-noise
-//               https://github.com/stegu/webgl-noise
-// 
-
-vec3 mod289(vec3 x) {
-  return x - floor(x * (1.0 / 289.0)) * 289.0;
-}
-
-vec2 mod289(vec2 x) {
-  return x - floor(x * (1.0 / 289.0)) * 289.0;
-}
-
-vec3 permute(vec3 x) {
-  return mod289(((x*34.0)+1.0)*x);
-}
-
-float snoise(vec2 v)
-  {
-  const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
-                      0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
-                     -0.577350269189626,  // -1.0 + 2.0 * C.x
-                      0.024390243902439); // 1.0 / 41.0
-// First corner
-  vec2 i  = floor(v + dot(v, C.yy) );
-  vec2 x0 = v -   i + dot(i, C.xx);
-
-// Other corners
-  vec2 i1;
-  //i1.x = step( x0.y, x0.x ); // x0.x > x0.y ? 1.0 : 0.0
-  //i1.y = 1.0 - i1.x;
-  i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-  // x0 = x0 - 0.0 + 0.0 * C.xx ;
-  // x1 = x0 - i1 + 1.0 * C.xx ;
-  // x2 = x0 - 1.0 + 2.0 * C.xx ;
-  vec4 x12 = x0.xyxy + C.xxzz;
-  x12.xy -= i1;
-
-// Permutations
-  i = mod289(i); // Avoid truncation effects in permutation
-  vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
-		+ i.x + vec3(0.0, i1.x, 1.0 ));
-
-  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-  m = m*m ;
-  m = m*m ;
-
-// Gradients: 41 points uniformly over a line, mapped onto a diamond.
-// The ring size 17*17 = 289 is close to a multiple of 41 (41*7 = 287)
-
-  vec3 x = 2.0 * fract(p * C.www) - 1.0;
-  vec3 h = abs(x) - 0.5;
-  vec3 ox = floor(x + 0.5);
-  vec3 a0 = x - ox;
-
-// Normalise gradients implicitly by scaling m
-// Approximation of: m *= inversesqrt( a0*a0 + h*h );
-  m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
-
-// Compute final noise value at P
-  vec3 g;
-  g.x  = a0.x  * x0.x  + h.x  * x0.y;
-  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-  return 130.0 * dot(m, g);
-}
-</script>
+</div>
+  <div class="overlay" id="overlay">
+  <nav class="overlay-menu">
+    <ul>
+        <li ><a href="https://www.puffbat.com"> Created By <br>Puffbat</a></li><br>
+     
+      <li>Featured Fliers:</li>
+       <li><a href="https://flier.cc/shitshow">The Shit Show</a></li>
+     
+    
+      
+    </ul>
+  </nav>
+</div>
 <!-- partial -->
-  <script  src="./script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script><script  src="./script.js"></script>
 
 </body>
 </html>
